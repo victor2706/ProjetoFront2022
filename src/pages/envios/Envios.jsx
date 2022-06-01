@@ -14,7 +14,7 @@ const Envios = () => {
   const params = useParams()
   const navigate = useNavigate()
   const { register, handleSubmit, setValue, formState: { errors } } = useForm();
-  const reference = {register, errors, validator: envioValidator, setValue}
+  const reference = {register, errors, validator: envioValidator, setValue};
 
   useEffect(() => {
     if (params.id) {

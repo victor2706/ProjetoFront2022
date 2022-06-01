@@ -1,4 +1,4 @@
-class DisciplinaService {
+class FornecedorService {
     getAll(){
         const disciplinas = localStorage.getItem('disciplinas')
         return disciplinas ? JSON.parse(disciplinas) : []
@@ -28,4 +28,4 @@ class DisciplinaService {
     }
 }
 
-export default new DisciplinaService()
+export default new FornecedorService()
