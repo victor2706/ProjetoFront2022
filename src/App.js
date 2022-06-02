@@ -10,8 +10,8 @@ import Envios from "./pages/envios/Envios";
 import EnviosLista from "./pages/envios/EnviosLista";
 import Lojas from "./pages/lojas/Lojas";
 import LojasLista from "./pages/lojas/LojasLista";
-import Fornecedores from "./pages/disciplinas/Fornecedores";
-import FornecedoresLista from "./pages/disciplinas/FornecedorLista";
+import Fornecedores from "./pages/fornecedores/Fornecedores";
+import FornecedoresLista from "./pages/fornecedores/FornecedorLista";
 
 
 function App() {
@@ -22,7 +22,6 @@ function App() {
         <Container>
           <Routes>
             <Route path="/" element={<Lojas />} />
-
             <Route path="/clientes" element={<ClientesLista />} />
             <Route path="/clientes/create" element={<Clientes />} />
             <Route path="/clientes/:id" element={<Clientes />} />

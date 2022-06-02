@@ -1,5 +1,5 @@
 const envioValidator = {
-    nome: {
+    cliente: {
         required: "O Nome é Obrigatório",
         minLength: {
             value: 1,

@@ -6,6 +6,10 @@ import { BsArrowLeft } from 'react-icons/bs'
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import envioValidator from '../../validators/envioValidator';
 import EnvioService from '../../services/gestor/EnvioService';
+import ClienteService from '../../services/gestor/ClienteService';
+import ProdutoService from '../../services/gestor/ProdutoService';
+import FornecedorService from '../../services/gestor/FornecedorService';
+import LojaService from '../../services/gestor/LojaService';
 import { mask } from 'remask';
 import Firulas from '../../components/Firulas';
 
@@ -15,7 +19,10 @@ const Envios = () => {
   const navigate = useNavigate()
   const { register, handleSubmit, setValue, formState: { errors } } = useForm();
   const reference = {register, errors, validator: envioValidator, setValue};
-
+  const cliente = ClienteService.getAll()
+  const produto = ProdutoService.getAll()
+  const fornecedor = FornecedorService.getAll()
+  const loja = LojaService.getAll()
   useEffect(() => {
     if (params.id) {
       const envio = EnvioService.get(params.id)
@@ -47,25 +54,42 @@ const Envios = () => {
       <h1><p class="text-center">Cadastro de Envios:</p></h1>
 
       <Form >
-        <Form.Group className="mb-3" controlId="nome">
-          <Form.Label>Nome do Cliente: </Form.Label>
-          <Form.Control isInvalid={errors.nome} type="text" {...register("nome", envioValidator.nome)} />
-          {errors.nome && <span>{errors.nome.message}</span>}
+      <Form.Group className="mb-3" controlId="cliente">
+          <Form.Label>Nome do cliente: </Form.Label>
+          <Form.Select {...register("cliente", envioValidator.cliente)}>
+            <option>Selecione</option>
+            {cliente.map((item, i) => (
+              <option key={i} value={item.nome}>{item.nome}</option>
+            ))}
+          </Form.Select>
         </Form.Group>
         <Form.Group className="mb-3" controlId="produto">
           <Form.Label>Nome do produto: </Form.Label>
-          <Form.Control isInvalid={errors.produto} type="text" {...register("produto", envioValidator.produto)} />
-          {errors.produto && <span>{errors.produto.message}</span>}
+          <Form.Select {...register("produto", envioValidator.produto)}>
+            <option>Selecione</option>
+            {produto.map((item, i) => (
+              <option key={i} value={item.nome}>{item.nome}</option>
+            ))}
+          </Form.Select>
         </Form.Group>
         <Form.Group className="mb-3" controlId="fornecedor">
           <Form.Label>Nome do fornecedor: </Form.Label>
-          <Form.Control isInvalid={errors.fornecedor} type="text" {...register("fornecedor", envioValidator.fornecedor)} />
-          {errors.fornecedor && <span>{errors.fornecedor.message}</span>}
+          <Form.Select {...register("fornecedor", envioValidator.fornecedor)}>
+            <option>Selecione</option>
+            {fornecedor.map((item, i) => (
+              <option key={i} value={item.nome}>{item.nome}</option>
+            ))}
+          </Form.Select>
         </Form.Group>
-        <Form.Group className="mb-3" controlId="lojas">
-          <Form.Label>Nome da Lojas: </Form.Label>
-          <Form.Control isInvalid={errors.lojas} type="text" {...register("lojas", envioValidator.lojas)} />
-          {errors.lojas && <span>{errors.lojas.message}</span>}
+        <Form.Group className="mb-3" controlId="loja">
+          <Form.Label>Nome da loja: </Form.Label>
+          <Form.Select {...register("loja", envioValidator.loja)}>
+            <option>Selecione</option>
+            {loja.map((item, i) => (
+              <option key={i} value={item.nome}>{item.nome}</option>
+            ))}
+          </Form.Select>
+          {errors.loja && <span>{errors.loja.message}</span>}
         </Form.Group>
         <Form.Group className="mb-3" controlId="quantidade">
           <Form.Label>Quantidades do produto: </Form.Label>

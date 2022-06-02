@@ -8,7 +8,7 @@ const Menu = () => {
 
       <Navbar bg="warning" variant="light" className="mb-3">
         <Container>
-          <Navbar.Brand href="/paginaInicial">EmpresaNew</Navbar.Brand>
+          <Navbar.Brand href="/clientes">Mercadinho</Navbar.Brand>
           <Nav className="me-auto">
             <Link className="nav-link" to="/clientes">Clientes</Link>
             <Link className="nav-link" to="/lojas">Lojas</Link>

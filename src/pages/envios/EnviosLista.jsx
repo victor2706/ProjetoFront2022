@@ -60,10 +60,10 @@ const SemestresLista = () => {
         <tbody>
           {envios.map((item, i) => (
             <tr key={i}>
-              <td class="text-center">{item.nome}</td>
+              <td class="text-center">{item.cliente}</td>
               <td class="text-center">{item.produto}</td>
               <td class="text-center">{item.fornecedor}</td>
-              <td class="text-center">{item.lojas}</td>
+              <td class="text-center">{item.loja}</td>
               <td class="text-center">{item.quantidade}</td>
               <td class="text-center">{item.cep}</td>
               <td class="text-center">{item.data}</td>

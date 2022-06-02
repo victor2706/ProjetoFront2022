@@ -5,6 +5,7 @@ import { FaCheck } from 'react-icons/fa'
 import { BsArrowLeft } from 'react-icons/bs'
 import FornecedorService from '../../services/gestor/FornecedorService';
 import fornecedorValidator from '../../validators/fornecedorValidator';
+import ProdutoService from '../../services/gestor/ProdutoService';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { mask } from 'remask';
 import Firulas from '../../components/Firulas';
@@ -15,7 +16,8 @@ const Fornecedores = () => {
   const navigate = useNavigate()
   const { register, handleSubmit, setValue, formState: { errors } } = useForm();
   const reference = {register, errors, validator: fornecedorValidator, setValue};
-  
+  const produto = ProdutoService.getAll()
+
   useEffect(() => {
     if (params.id) {
       const disciplina = FornecedorService.get(params.id)
@@ -57,9 +59,13 @@ const Fornecedores = () => {
           {errors.cnpj && <span>{errors.cnpj.message}</span>}
         </Form.Group>
         <Form.Group className="mb-3" controlId="produto">
-          <Form.Label>tipo de produto: </Form.Label>
-          <Form.Control isInvalid={errors.produto} type="text" {...register("produto", fornecedorValidator.produto)} />
-          {errors.produto && <span>{errors.produto.message}</span>}
+          <Form.Label>Nome do produto: </Form.Label>
+          <Form.Select {...register("produto", fornecedorValidator.produto)}>
+            <option>Selecione</option>
+            {produto.map((item, i) => (
+              <option key={i} value={item.nome}>{item.nome}</option>
+            ))}
+          </Form.Select>
         </Form.Group>
         <Form.Group className="mb-3" controlId="data">
         <Firulas name="data" label="Data de vencimento do produto" isInvalid={errors.data} type="date" reference={reference} {...register("data", fornecedorValidator.data)} />

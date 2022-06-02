@@ -44,7 +44,7 @@ console.log(clientes);
       <h1>
         <p class="text-center">Clientes</p>
       </h1>
-      <p class="text-end"><Link className='btn btn-primary' to={'/clientes/create'}><FaPlus /> Novo</Link></p>
+      <p class="text-end" ><Link className='btn btn-primary'  to={'/clientes/create'}><FaPlus /> Novo</Link></p>
       <Table striped bordered hover>
         <thead>
           <tr>

@@ -50,16 +50,23 @@ const Lojas = () => {
           {...register("nome", LojaValidator.nome)}/>
           {errors.nome && <span>{errors.nome.message}</span>}
         </Form.Group>
-        <Form.Group className="mb-3" controlId="duracao">
+        <Form.Group className="mb-3" controlId="cnpj">
           <Form.Label>Cnpj: </Form.Label>
           <Form.Control isInvalid={errors.cnpj} type="text" {...register("cnpj", LojaValidator.cnpj)} mask="99.999.999/9999-99" onChange={handleChange} />
           {errors.cnpj && <span>{errors.cnpj.message}</span>}
         </Form.Group>
-        <Form.Group className="mb-3" controlId="modalidade">
-          <Form.Label>Local da Loja: </Form.Label>
-          <Form.Control isInvalid={errors.local} type="text" {...register("local", LojaValidator.local)} />
+        <Form.Group className="mb-3" controlId="local">
+        <Form.Label>Local: </Form.Label>
+        <Form.Select {...register("local")} type="text" {...register("local", LojaValidator.local)}>
+          <option disabled selected>Local</option>
+          <option value="Planaltina">Planaltina</option>
+          <option value="Samambaia">Samambaia</option>
+          <option value="Águas Claras">Águas Claras</option>
+          <option value="Riacho Fundo I">Riacho Fundo I</option>
+          <option value="Riacho Fundo II">Riacho Fundo II</option>
+          </Form.Select>
           {errors.local && <span>{errors.local.message}</span>}
-        </Form.Group>
+          </Form.Group>
         <div className="text-center">
           <Button onClick={handleSubmit(salvar)} className='btn btn-success'><FaCheck /> Salvar</Button>{' '}
           <Link className='btn btn-danger' to={-1}><BsArrowLeft /> Voltar</Link>
