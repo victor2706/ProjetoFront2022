@@ -48,21 +48,21 @@ const FornecedoresLista = () => {
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th>Nome do Fornecedor</th>
-            <th>Cnpj</th>
-            <th>tipo de produto</th>
-            <th>Data de vencimento</th>
-            <th>Editar e Excluir</th>
+            <th class="text-center">Nome do Fornecedor</th>
+            <th class="text-center">Cnpj</th>
+            <th class="text-center">tipo de produto</th>
+            <th class="text-center">Data de vencimento</th>
+            <th class="text-center">Editar e Excluir</th>
           </tr>
         </thead>
         <tbody>
           {fornecedores.map((item, i) => (
             <tr key={i}>
-              <td>{item.nome}</td>
-              <td>{item.cnpj}</td>
-              <td>{item.produto}</td>
-              <td>{item.data}</td>
-              <td>
+              <td class="text-center">{item.nome}</td>
+              <td class="text-center">{item.cnpj}</td>
+              <td class="text-center">{item.produto}</td>
+              <td class="text-center">{item.data}</td>
+              <td class="text-center">
                 <Link to={'/fornecedores/' + i}><BsPencilFill /></Link>{' '}
                 <BsTrash onClick={() => apagar(i)} className='text-danger' />
               </td>
